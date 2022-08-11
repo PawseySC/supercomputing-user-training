@@ -9,7 +9,7 @@
 # print date and time
 echo "The date is: $(date)"
 
-# print host name (from the compute node) multiple times
+# print host name multiple times
 # wait 15 seconds in between
 for i in $(seq 1 8); do
    echo "The hostname is: $(hostname)"

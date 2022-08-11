@@ -6,7 +6,7 @@
 #SBATCH --time=00:02:00
 
 # print date and time
-date
+echo "The date is: $(date)"
 
 # print host name (from the compute node) multiple times
 # wait 15 seconds in between
@@ -16,5 +16,5 @@ for i in $(seq 1 6); do
 done
 
 # print date and time again
-date
+echo "The date is: $(date)"
 

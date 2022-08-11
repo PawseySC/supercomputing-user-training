@@ -14,3 +14,7 @@ for i in $(seq 1 6); do
    echo "The hostname is: $(hostname)"
    sleep 15s
 done
+
+# print date and time again
+date
+

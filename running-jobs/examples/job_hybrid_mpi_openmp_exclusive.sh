@@ -2,7 +2,7 @@
 
 #SBATCH --output=%x.out
 #SBATCH --partition=work
-#SBATCH --ntasks=8
+#SBATCH --ntasks=4
 #SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=64
 #SBATCH --time=00:01:00

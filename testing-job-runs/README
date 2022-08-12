@@ -1,0 +1,4 @@
+Benchmarks collected by Marco in November 2021
+* Supercomputer: Magnus
+* Application: LAMMPS 2July2021, built with Cray GCC 8.3.0, using Single Precision MKL FFTs
+* Input: water box with 800,000 atoms

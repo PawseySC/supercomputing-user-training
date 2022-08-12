@@ -1,0 +1,8 @@
+24 : Loop time of 2876.22 on 24 procs for 10000 steps with 802176 atoms
+48 : Loop time of 1488.54 on 48 procs for 10000 steps with 802176 atoms
+96 : Loop time of 794.762 on 96 procs for 10000 steps with 802176 atoms
+192 : Loop time of 454.81 on 192 procs for 10000 steps with 802176 atoms
+384 : Loop time of 220.925 on 384 procs for 10000 steps with 802176 atoms
+768 : Loop time of 121.548 on 768 procs for 10000 steps with 802176 atoms
+1536 : Loop time of 79.3502 on 1536 procs for 10000 steps with 802176 atoms
+3072 : Loop time of 62.3691 on 3072 procs for 10000 steps with 802176 atoms

@@ -1,3 +1,4 @@
 slurm-*.out
 *.sh.out
 *.x
+.DS_Store

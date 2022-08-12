@@ -1,4 +1,4 @@
-# Cores Walltime[s] Relative_Walltime Speedup Efficiency Cost
+# Cores Runtime[s] Relative_Runtime Speedup Efficiency Relative_Cost
 24 2876.22 1 1 100 1
 48 1488.54 0.517533 1.93224 96.6121 1.03507
 96 794.762 0.276322 3.61897 90.4743 1.10529

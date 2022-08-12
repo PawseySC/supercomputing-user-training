@@ -3,7 +3,7 @@
 input="timing-data"
 output="scaling-data"
 
-echo "# Cores Walltime[s] Relative_Walltime Speedup Efficiency Cost" >$output
+echo "# Cores Runtime[s] Relative_Runtime Speedup Efficiency Relative_Cost" >$output
 
 awk '{
   if($1==24){nod=$1;ref=$6;refTime=$1*$6} 

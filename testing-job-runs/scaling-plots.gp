@@ -30,7 +30,7 @@ set mytics 5
 p 'scaling-data' u 1:5 w lp not
 
 set out "md_lammps_water_800k_cost.png"
-set title "Relative Cost"
+set title "Relative Total Cost"
 set yrange [0.9:3]
 set ytics 0,0.2
 set mytics 2

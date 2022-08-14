@@ -2,3 +2,5 @@ slurm-*.out
 *.sh.out
 *.x
 .DS_Store
+input-file
+output-file

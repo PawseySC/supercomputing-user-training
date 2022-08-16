@@ -7,100 +7,77 @@ Let's first navigate to our instance's home (you could omit `~` to get home, too
 ```
 $ cd ~
 ```
-{: .bash}
 
 Check the path of the *current working directory*:
 ```
 $ pwd
-```
-{: .bash}
-```
+
 /home/ubuntu
 ```
-{: .output}
 
 Go to the *parent* directory of the current one:
 ```
 $ cd ..
 ```
-{: .bash}
 
 Check where you are:
 ```
 $ pwd
-```
-{: .bash}
-```
+
 /home
 ```
-{: .output}
 
 Now navigate to the data directory for this workshop, `/data`:
 ```
 $ cd /data
 ```
-{: .bash}
 
 To make a new file, *e.g.* an empty text file:
 ```
 $ touch empty.txt
 ```
-{: .bash}
 
 We can check the content of this directory, to see whether the file has been created:
 ```
 $ ls
-```
-{: .bash}
-```
+
 empty.txt
 ```
-{: .output}
 
 Get details about files and directories with:
 ```
 $ ls -l
-```
-{: .bash}
-```
+
 -rw-r-----  1 ubuntu ubuntu      0 Jun  6 15:24 empty.txt
 ```
-{: .output}
 
 To make a copy of a file with another name:
 ```
 $ cp empty.txt empty-copy.txt 
 ```
-{: .bash}
 
 To rename a file:
 ```
 $ mv empty-copy.txt empty-second.txt
 ```
-{: .bash}
 
 To move a file to another directory, *e.g.* your home (still `mv`, but now the second argument is an existing directory):
 
 ```
 $ mv empty-second.txt /home/ubuntu/
 ```
-{: .bash}
 
 Now let's remove both files:
 ```
 $ rm empty.txt /home/ubuntu/empty-second.txt
 ```
-{: .bash}
 
 To discover the location of an application that is available in the environment:
 ```
 $ which bash
-```
-{: .bash}
-```
+
 /bin/bash
 ```
-{: .output}
 
 
 ## Defining variables
@@ -109,33 +86,25 @@ We can define a variable for a string of characters, *e.g.* a name, a filename o
 ```
 $ HELLO="ciao"
 ```
-{: .bash}
 
 We can check that it was defined correctly:
 ```
 $ echo $HELLO
-```
-{: .bash}
-```
+
 ciao
 ```
-{: .output}
 
 If we want the variable to be accessible inside sub-processes, we need to `export` it:
 ```
 $ export WORLD="mondo"
 ```
-{: .bash}
 
 A process could be a container, or just another bash shell:
 ```
 $ bash -c 'echo $HELLO $WORLD'
-```
-{: .bash}
-```
+
 mondo
 ```
-{: .output}
 
 Only the exported one is available in the sub-process.
 
@@ -143,31 +112,23 @@ We might use a variable for a directory path:
 ```
 $ MYHOME="/home/ubuntu"
 ```
-{: .bash}
 
 Now we can use this variable with commands that operate on directories:
 ```
 $ cd $MYHOME
 $ pwd
-```
-{: .bash}
-```
+
 /home/ubuntu
 ```
-{: .output}
 
 There's a way to store the output of a command inside the variable.  It uses the form `$( .. )`.  For instance, let's obtain the path of the current working directory from the command `cmd`, and store it in the variable `myplace`:
 
 ```
 $ myplace=$(pwd)
 $ echo $myplace
-```
-{: .bash}
 
-```
 /home/ubuntu
 ```
-{: .output}
 
 Every shell session automatically defines a number of variables, some of which can be useful.  
 Among others, `$HOME` contains the path to your home directory, `$USER` contains your username, and `$PATH` has the list of paths where the shell looks for executable programs and scripts.
@@ -179,7 +140,6 @@ Let's now create a text file with some words in it.  We'll use a popular, friend
 ```
 $ nano words.txt
 ```
-{: .bash}
 
 In the editor screen, write something random.
 
@@ -191,18 +151,14 @@ Now we want to visualise the contents of this file on our terminal.
 We can use `cat` to display it all in one go:
 ```
 $ cat words.txt
-```
-{: .bash}
-```
+
 random words that we just saved in this file
 ```
-{: .output}
 
 For very long files, we might want to be able to navigate the content in chunks.  We can achieve this with `less`:
 ```
 $ less words.txt
 ```
-{: .bash}
 
 Go forward by pressing `Ctrl-F`, go backwards with `Ctrl-B`.  
 Quit the navigation by pressing `q`.

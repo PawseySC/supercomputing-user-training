@@ -2,5 +2,6 @@ slurm-*.out
 *.sh.out
 *.x
 .DS_Store
+.vscode
 input-file
 output-file

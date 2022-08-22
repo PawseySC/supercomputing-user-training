@@ -2,7 +2,7 @@
 #SBATCH --job-name=step1-stage-data
 #SBATCH --partition=copy
 #SBATCH --ntasks=1
-#SBATCH --tasks-per-node=1
+#SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=00:01:00
 

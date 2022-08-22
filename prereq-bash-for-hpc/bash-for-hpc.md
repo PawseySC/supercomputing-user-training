@@ -1,4 +1,4 @@
-# Bash for HPC
+# Bash for HPC -- WORK IN PROGRESS
 
 
 ## Handling directories and files

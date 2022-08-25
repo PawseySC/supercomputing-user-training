@@ -1,4 +1,4 @@
-# Bash for HPC -- WORK IN PROGRESS
+# Bash Shell Basics -- WORK IN PROGRESS
 
 
 ## Handling directories and files

@@ -1,8 +1,23 @@
 # Bash Shell Basics
 
-This is a concise refresher on the basic commands available with the Bash shell.  
+This is a concise refresher on the basic commands available with the Bash shell.
 It is designed as a prerequisite module to the Supercomputing User Training offered by [**Pawsey Supercomputing Research Centre**](https://www.pawsey.org.au), Perth (Australia).  
 For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swcarpentry.github.io/shell-novice), by the [Software Carpentries](https://software-carpentry.org).  
+
+
+## Outline
+
+1. [Definitions](#definitions)
+2. [Hands-on](#hands-on)  
+  2.1. [Handling directories](#handling-directories)  
+  2.2. [Handling files](#handling-files)  
+  2.3. [Using environment variables](#using-environment-variables)  
+  2.4. [Editing and visualising text files](#editing-and-visualising-text-files)  
+  2.5. [Manipulating outputs and text files](#manipulating-outputs-and-text-files)  
+  2.6. [More commands](#more-commands)  
+  2.7. [Keyboard tricks](#keyboard-tricks)  
+
+***
 
 
 ## Definitions
@@ -24,8 +39,12 @@ For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swc
 
 NOTE: in all the examples below, by convention commands are identified by lines starting with `$`, which represents the prompt (not to be typed).  Other lines represent command outputs.  Also note how `#` denotes a comment line in Bash.
 
+***
 
-## Handling directories
+
+## Hands-on
+
+### Handling directories
 
 First, navigate to the home directory using `cd`; here, `~` refers to the home, and can be omitted if used alone:
 ```
@@ -83,8 +102,10 @@ $ pwd
 /home/username/training
 ```
 
+***
 
-## Handling files
+
+### Handling files
 
 Now let us play with files.  Make new empty files using `touch`:
 ```
@@ -169,8 +190,10 @@ dir2:
 another-file
 ```
 
+***
 
-## Using environment variables
+
+### Using environment variables
 
 You can assign a **value**, *i.e.* a string of characters, to an environment **variable**.  We call **shell environment** the whole set of variables defined in the current shell session.  
 Assign a variable using the equal operator, `=`:
@@ -222,7 +245,7 @@ $ echo $MYDIR_AGAIN
 /home/username/training
 ```
 
-Every shell session automatically defines a number of environment variables, some of which can be quiteuseful.  
+Every shell session automatically defines a number of environment variables, some of which can be quite useful.
 Among others, `$HOME` contains the path to your home directory, `$USER` contains your username, and `$PATH` has the list of paths where the shell looks for executable programs and scripts:
 ```
 $ echo $HOME
@@ -233,8 +256,10 @@ $ echo $PATH
 /usr/local/bin:/usr/bin:/bin
 ```
 
+***
 
-## Editing and visualising text files
+
+### Editing and visualising text files
 
 Let us now use the text editor `nano` to create, edit and save a text file.  First, start the editor with a new empty text filw called `text`:
 ```
@@ -250,8 +275,7 @@ Extra line 4
 Last line 5
 ```
 
-To save this text, press `Ctrl-O` (`Control` + `O`), then `Enter`.  
-To exit the editor, press `Ctrl-X`.
+To save this text, press `Ctrl-O` (`Control` + `O`), then confirm with `Enter`.  To exit the editor, press `Ctrl-X`.
 
 Visualise the full contents of the file from the shell using `cat`:
 ```
@@ -283,8 +307,10 @@ $ tail -1 text
 Last line 5
 ```
 
+***
 
-## Manipulating outputs and text files
+
+### Manipulating outputs and text files
 
 Use `wc` to get the line, word and character count of a text:
 ```
@@ -333,8 +359,10 @@ $ wc < bye
 
 Other useful commands for file and output manipulations include `cut`, `tr`, `sort`, `sed` and `awk`.
 
+***
 
-## More commands
+
+### More commands
 
 Use `hostname` to output the name of the computer/server where the shell session is open:
 ```
@@ -400,8 +428,12 @@ $ ls -l archive*
 ```
 The latter tarball takes 581 bytes instead of 20480.  Note that compression rates may vary significantly depending on the file contents.
 
+Other useful Bash syntax constructs include `for`/`while` loops and `if`/`elif`/`else` conditionals.
 
-## Keyboard tricks
+***
+
+
+### Keyboard tricks
 
 Use `Up-arrow` and `Down-arrow` to browse the shell history of commands:
 ```
@@ -436,3 +468,6 @@ $
 ```
 
 This is all for this Bash shell refresher.  You can close the shell session with `exit`!
+
+***
+

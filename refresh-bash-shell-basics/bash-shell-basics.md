@@ -37,7 +37,7 @@ $ cd
 Check the path of the **current working directory** with `pwd`:
 ```
 $ pwd
-/home/*username*
+/home/username
 ```
 
 Create a new directory with `mkdir`:
@@ -49,21 +49,21 @@ Enter it, and check where you are:
 ```
 $ cd training
 $ pwd
-/home/*username*/training
+/home/username/training
 ```
 
 The current directory can be referred to using a single dot, `.`:
 ```
 $ cd .
 $ pwd
-/home/*username*/training
+/home/username/training
 ```
 
-The **parent** directory can be referred to using a double dot, `..`:
+The **parent directory** can be referred to using a double dot, `..`:
 ```
 $ cd ..
 $ pwd
-/home/*username*
+/home/username
 $ cd training
 ```
 
@@ -73,14 +73,14 @@ $ mkdir dir1 dir2
 $ mkdir dir1/one-more-dir
 $ cd dir1
 ```
-A **full path** does not depend on the current working directory, and starts with a slash, `/`, *e.g.*: `/home/*username*/training`.  
+A **full path** does not depend on the current working directory, and starts with a slash, `/`, *e.g.*: `/home/username/training`.  
 A **relative path** depends on the current working directory, and starts with a directory name, a `.` or a `..`, *e.g.*: `one-more-dir`, `./one-more-dir`, `../dir2`.
 
 Go back to the `training` parent directory:
 ```
 $ cd ..
 $ pwd
-/home/*username*/training
+/home/username/training
 ```
 
 
@@ -106,11 +106,11 @@ Get more details about files and directories with `ls -l`:
 ```
 $ ls -l
 total 8
-drwxr-x--- 3 *username* *username* 4096 Aug 26 14:10 dir1
-drwxr-x--- 2 *username* *username* 4096 Aug 26 14:10 dir2
--rw-r----- 1 *username* *username*    0 Aug 26 14:10 file1
--rw-r----- 1 *username* *username*    0 Aug 26 14:10 file2
--rw-r----- 1 *username* *username*    0 Aug 26 14:10 file3
+drwxr-x--- 3 username username 4096 Aug 26 14:10 dir1
+drwxr-x--- 2 username username 4096 Aug 26 14:10 dir2
+-rw-r----- 1 username username    0 Aug 26 14:10 file1
+-rw-r----- 1 username username    0 Aug 26 14:10 file2
+-rw-r----- 1 username username    0 Aug 26 14:10 file3
 ```
 
 To make a copy of a file with another name use `cp`:
@@ -203,14 +203,14 @@ exit
 You can use a variable to store a directory path:
 ```
 $ pwd
-/home/*username*/training
-$ MYDIR="/home/*username*/training"
+/home/username/training
+$ MYDIR="/home/username/training"
 ```
 
 And then use it:
 ```
 $ echo $MYDIR
-/home/*username*/training
+/home/username/training
 $ ls $MYDIR
 dir1  dir2  file1  file2
 ```
@@ -219,16 +219,16 @@ There is a method to store the output of a command inside the variable: ncapsula
 ```
 $ MYDIR_AGAIN="$(pwd)"
 $ echo $MYDIR_AGAIN
-/home/*username*/training
+/home/username/training
 ```
 
 Every shell session automatically defines a number of environment variables, some of which can be quiteuseful.  
 Among others, `$HOME` contains the path to your home directory, `$USER` contains your username, and `$PATH` has the list of paths where the shell looks for executable programs and scripts:
 ```
 $ echo $HOME
-/home/*username*
+/home/username
 $ echo $USER
-*username*
+username
 $ echo $PATH
 /usr/local/bin:/usr/bin:/bin
 ```
@@ -299,13 +299,13 @@ $ grep Super text
 Super line 3
 ```
 
-Commands can be connected together to feed the output of a command as the input for the following command. To connect commands use the pipe operator `|`:
+Commands can be connected together to feed the output of a command as the input for the following command. To connect commands use the **pipe operator**, `|`:
 ```
 $ echo "Hello world from Pawsey." | wc
       1       4      25
 ```
 
-Redirection operators can be used to connect a file with the output or input of a command.  
+**Redirection operators** can be used to connect a file with the output or input of a command.  
 Use `>` to redirect a command output into a file (file will be overwritten):
 ```
 $ echo "Hello world from Pawsey." >hello
@@ -395,8 +395,8 @@ If you also want to compress the tarball to reduce its size, add the option `z` 
 ```
 $ tar czf archive2.tar.gz file* dir*
 $ ls -l archive*
--rw-r----- 1 *username* *username* 20480 Aug 26 15:59 archive1.tar
--rw-r----- 1 *username* *username*   581 Aug 26 16:03 archive2.tar.gz
+-rw-r----- 1 username username 20480 Aug 26 15:59 archive1.tar
+-rw-r----- 1 username username   581 Aug 26 16:03 archive2.tar.gz
 ```
 The latter tarball takes 581 bytes instead of 20480.  Note that compression rates may vary significantly depending on the file contents.
 

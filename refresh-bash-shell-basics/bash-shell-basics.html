@@ -81,9 +81,22 @@
     </head>
     <body class="vscode-body vscode-light">
         <h1 id="bash-shell-basics">Bash Shell Basics</h1>
-<p>This is a concise refresher on the basic commands available with the Bash shell.<br>
+<p>This is a concise refresher on the basic commands available with the Bash shell.
 It is designed as a prerequisite module to the Supercomputing User Training offered by <a href="https://www.pawsey.org.au"><strong>Pawsey Supercomputing Research Centre</strong></a>, Perth (Australia).<br>
 For a more detailed tutorial on the Bash shell, see <a href="https://swcarpentry.github.io/shell-novice">The Unix Shell</a>, by the <a href="https://software-carpentry.org">Software Carpentries</a>.</p>
+<h2 id="outline">Outline</h2>
+<ol>
+<li><a href="#definitions">Definitions</a></li>
+<li><a href="#hands-on">Hands-on</a><br>
+2.1. <a href="#handling-directories">Handling directories</a><br>
+2.2. <a href="#handling-files">Handling files</a><br>
+2.3. <a href="#using-environment-variables">Using environment variables</a><br>
+2.4. <a href="#editing-and-visualising-text-files">Editing and visualising text files</a><br>
+2.5. <a href="#manipulating-outputs-and-text-files">Manipulating outputs and text files</a><br>
+2.6. <a href="#more-commands">More commands</a><br>
+2.7. <a href="#keyboard-tricks">Keyboard tricks</a></li>
+</ol>
+<hr>
 <h2 id="definitions">Definitions</h2>
 <ul>
 <li>
@@ -111,7 +124,9 @@ For a more detailed tutorial on the Bash shell, see <a href="https://swcarpentry
 </li>
 </ul>
 <p>NOTE: in all the examples below, by convention commands are identified by lines starting with <code>$</code>, which represents the prompt (not to be typed).  Other lines represent command outputs.  Also note how <code>#</code> denotes a comment line in Bash.</p>
-<h2 id="handling-directories">Handling directories</h2>
+<hr>
+<h2 id="hands-on">Hands-on</h2>
+<h3 id="handling-directories">Handling directories</h3>
 <p>First, navigate to the home directory using <code>cd</code>; here, <code>~</code> refers to the home, and can be omitted if used alone:</p>
 <pre><code><code><div>$ cd ~
 $ # or also
@@ -152,7 +167,8 @@ A <strong>relative path</strong> depends on the current working directory, and s
 $ pwd
 /home/username/training
 </div></code></code></pre>
-<h2 id="handling-files">Handling files</h2>
+<hr>
+<h3 id="handling-files">Handling files</h3>
 <p>Now let us play with files.  Make new empty files using <code>touch</code>:</p>
 <pre><code><code><div>$ touch file1
 $ touch file2 file3
@@ -211,7 +227,8 @@ file4  one-more-dir
 dir2:
 another-file
 </div></code></code></pre>
-<h2 id="using-environment-variables">Using environment variables</h2>
+<hr>
+<h3 id="using-environment-variables">Using environment variables</h3>
 <p>You can assign a <strong>value</strong>, <em>i.e.</em> a string of characters, to an environment <strong>variable</strong>.  We call <strong>shell environment</strong> the whole set of variables defined in the current shell session.<br>
 Assign a variable using the equal operator, <code>=</code>:</p>
 <pre><code><code><div>$ HELLO=&quot;world&quot;
@@ -248,7 +265,7 @@ dir1  dir2  file1  file2
 $ echo $MYDIR_AGAIN
 /home/username/training
 </div></code></code></pre>
-<p>Every shell session automatically defines a number of environment variables, some of which can be quiteuseful.<br>
+<p>Every shell session automatically defines a number of environment variables, some of which can be quite useful.
 Among others, <code>$HOME</code> contains the path to your home directory, <code>$USER</code> contains your username, and <code>$PATH</code> has the list of paths where the shell looks for executable programs and scripts:</p>
 <pre><code><code><div>$ echo $HOME
 /home/username
@@ -257,7 +274,8 @@ username
 $ echo $PATH
 /usr/local/bin:/usr/bin:/bin
 </div></code></code></pre>
-<h2 id="editing-and-visualising-text-files">Editing and visualising text files</h2>
+<hr>
+<h3 id="editing-and-visualising-text-files">Editing and visualising text files</h3>
 <p>Let us now use the text editor <code>nano</code> to create, edit and save a text file.  First, start the editor with a new empty text filw called <code>text</code>:</p>
 <pre><code><code><div>$ nano text
 </div></code></code></pre>
@@ -268,8 +286,7 @@ Super line 3
 Extra line 4
 Last line 5
 </div></code></code></pre>
-<p>To save this text, press <code>Ctrl-O</code> (<code>Control</code> + <code>O</code>), then <code>Enter</code>.<br>
-To exit the editor, press <code>Ctrl-X</code>.</p>
+<p>To save this text, press <code>Ctrl-O</code> (<code>Control</code> + <code>O</code>), then confirm with <code>Enter</code>.  To exit the editor, press <code>Ctrl-X</code>.</p>
 <p>Visualise the full contents of the file from the shell using <code>cat</code>:</p>
 <pre><code><code><div>$ cat text
 Line 1
@@ -294,7 +311,8 @@ Line 1
 $ tail -1 text 
 Last line 5
 </div></code></code></pre>
-<h2 id="manipulating-outputs-and-text-files">Manipulating outputs and text files</h2>
+<hr>
+<h3 id="manipulating-outputs-and-text-files">Manipulating outputs and text files</h3>
 <p>Use <code>wc</code> to get the line, word and character count of a text:</p>
 <pre><code><code><div>$ wc text
  5 14 58 text
@@ -329,7 +347,8 @@ Bye bye again.
  2  7 36
 </div></code></code></pre>
 <p>Other useful commands for file and output manipulations include <code>cut</code>, <code>tr</code>, <code>sort</code>, <code>sed</code> and <code>awk</code>.</p>
-<h2 id="more-commands">More commands</h2>
+<hr>
+<h3 id="more-commands">More commands</h3>
 <p>Use <code>hostname</code> to output the name of the computer/server where the shell session is open:</p>
 <pre><code><code><div>$ hostname
 setonix-01
@@ -377,7 +396,9 @@ $ ls -l archive*
 -rw-r----- 1 username username   581 Aug 26 16:03 archive2.tar.gz
 </div></code></code></pre>
 <p>The latter tarball takes 581 bytes instead of 20480.  Note that compression rates may vary significantly depending on the file contents.</p>
-<h2 id="keyboard-tricks">Keyboard tricks</h2>
+<p>Other useful Bash syntax constructs include <code>for</code>/<code>while</code> loops and <code>if</code>/<code>elif</code>/<code>else</code> conditionals.</p>
+<hr>
+<h3 id="keyboard-tricks">Keyboard tricks</h3>
 <p>Use <code>Up-arrow</code> and <code>Down-arrow</code> to browse the shell history of commands:</p>
 <pre><code><code><div>$ # hit Up-arrow once
 $ ls -l archive*
@@ -405,6 +426,7 @@ $ hostname^C
 $ 
 </div></code></code></pre>
 <p>This is all for this Bash shell refresher.  You can close the shell session with <code>exit</code>!</p>
+<hr>
 
         <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         

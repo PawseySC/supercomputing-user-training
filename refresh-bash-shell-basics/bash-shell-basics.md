@@ -1,4 +1,4 @@
-# Bash Shell Basics -- WORK IN PROGRESS
+# Bash Shell Basics
 
 This is a concise refresher on the basic commands available with the Bash shell.  
 It is designed as a prerequisite module to the Supercomputing User Training offered by Pawsey Supercomputing Research Centre, Perth (Australia).  

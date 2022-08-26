@@ -1,7 +1,7 @@
 # Bash Shell Basics
 
 This is a concise refresher on the basic commands available with the Bash shell.  
-It is designed as a prerequisite module to the Supercomputing User Training offered by Pawsey Supercomputing Research Centre, Perth (Australia).  
+It is designed as a prerequisite module to the Supercomputing User Training offered by [**Pawsey Supercomputing Research Centre**](https://www.pawsey.org.au), Perth (Australia).  
 For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swcarpentry.github.io/shell-novice), by the [Software Carpentries](https://software-carpentry.org).  
 
 

@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Bash Shell Basics -- WORK IN PROGRESS</title>
+        <title>Bash Shell Basics</title>
         <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -80,110 +80,331 @@
         
     </head>
     <body class="vscode-body vscode-light">
-        <h1 id="bash-shell-basics----work-in-progress">Bash Shell Basics -- WORK IN PROGRESS</h1>
-<h2 id="handling-directories-and-files">Handling directories and files</h2>
-<p>Let's first navigate to our instance's home (you could omit <code>~</code> to get home, too):</p>
+        <h1 id="bash-shell-basics">Bash Shell Basics</h1>
+<p>This is a concise refresher on the basic commands available with the Bash shell.<br>
+It is designed as a prerequisite module to the Supercomputing User Training offered by <a href="https://www.pawsey.org.au"><strong>Pawsey Supercomputing Research Centre</strong></a>, Perth (Australia).<br>
+For a more detailed tutorial on the Bash shell, see <a href="https://swcarpentry.github.io/shell-novice">The Unix Shell</a>, by the <a href="https://software-carpentry.org">Software Carpentries</a>.</p>
+<h2 id="definitions">Definitions</h2>
+<ul>
+<li>
+<p><strong>Command Line Interface</strong> (CLI): a type of interface to use a computer, that requires the user to type textual <strong>commands</strong> and read their textual outputs by means of a prompt. Some commands may require optional or mandatory <strong>arguments</strong>.</p>
+</li>
+<li>
+<p><strong>Shell</strong>: a program with a prompt providing a command line interface, and an interpreter to execute commands.  There are different implementations of a shell, using different <strong>shell languages</strong> for the commands.</p>
+</li>
+<li>
+<p><strong>Bash</strong>: one of the most popular shells in the Linux world.</p>
+</li>
+<li>
+<p><strong>Shell script</strong>: a text file containing a sequence of shell commands.  It can be executed via the shell, and is useful to increase reproducibility of a workflow.</p>
+</li>
+<li>
+<p>Main advantages of using a shell:</p>
+<ul>
+<li>Productivity (lots of actions with few keystrokes)</li>
+<li>Task automation</li>
+<li>Reproducibility (using shell scripts)</li>
+</ul>
+</li>
+<li>
+<p><strong>Text editor</strong>: a program used to open and edit textual files; some of them are designed for use within a command line interface, such as <strong>nano</strong>, <strong>vi</strong> and <strong>emacs</strong>.</p>
+</li>
+</ul>
+<p>NOTE: in all the examples below, by convention commands are identified by lines starting with <code>$</code>, which represents the prompt (not to be typed).  Other lines represent command outputs.  Also note how <code>#</code> denotes a comment line in Bash.</p>
+<h2 id="handling-directories">Handling directories</h2>
+<p>First, navigate to the home directory using <code>cd</code>; here, <code>~</code> refers to the home, and can be omitted if used alone:</p>
 <pre><code><code><div>$ cd ~
+$ # or also
+$ cd
 </div></code></code></pre>
-<p>Check the path of the <em>current working directory</em>:</p>
+<p>Check the path of the <strong>current working directory</strong> with <code>pwd</code>:</p>
 <pre><code><code><div>$ pwd
-
-/home/ubuntu
+/home/username
 </div></code></code></pre>
-<p>Go to the <em>parent</em> directory of the current one:</p>
-<pre><code><code><div>$ cd ..
+<p>Create a new directory with <code>mkdir</code>:</p>
+<pre><code><code><div>$ mkdir training
 </div></code></code></pre>
-<p>Check where you are:</p>
-<pre><code><code><div>$ pwd
-
-/home
-</div></code></code></pre>
-<p>Now navigate to the data directory for this workshop, <code>/data</code>:</p>
-<pre><code><code><div>$ cd /data
-</div></code></code></pre>
-<p>To make a new file, <em>e.g.</em> an empty text file:</p>
-<pre><code><code><div>$ touch empty.txt
-</div></code></code></pre>
-<p>We can check the content of this directory, to see whether the file has been created:</p>
-<pre><code><code><div>$ ls
-
-empty.txt
-</div></code></code></pre>
-<p>Get details about files and directories with:</p>
-<pre><code><code><div>$ ls -l
-
--rw-r-----  1 ubuntu ubuntu      0 Jun  6 15:24 empty.txt
-</div></code></code></pre>
-<p>To make a copy of a file with another name:</p>
-<pre><code><code><div>$ cp empty.txt empty-copy.txt 
-</div></code></code></pre>
-<p>To rename a file:</p>
-<pre><code><code><div>$ mv empty-copy.txt empty-second.txt
-</div></code></code></pre>
-<p>To move a file to another directory, <em>e.g.</em> your home (still <code>mv</code>, but now the second argument is an existing directory):</p>
-<pre><code><code><div>$ mv empty-second.txt /home/ubuntu/
-</div></code></code></pre>
-<p>Now let's remove both files:</p>
-<pre><code><code><div>$ rm empty.txt /home/ubuntu/empty-second.txt
-</div></code></code></pre>
-<p>To discover the location of an application that is available in the environment:</p>
-<pre><code><code><div>$ which bash
-
-/bin/bash
-</div></code></code></pre>
-<h2 id="defining-variables">Defining variables</h2>
-<p>We can define a variable for a string of characters, <em>e.g.</em> a name, a filename or a directory.  The variable can be used later on in the script or in the shell to refer to that string:</p>
-<pre><code><code><div>$ HELLO=&quot;ciao&quot;
-</div></code></code></pre>
-<p>We can check that it was defined correctly:</p>
-<pre><code><code><div>$ echo $HELLO
-
-ciao
-</div></code></code></pre>
-<p>If we want the variable to be accessible inside sub-processes, we need to <code>export</code> it:</p>
-<pre><code><code><div>$ export WORLD=&quot;mondo&quot;
-</div></code></code></pre>
-<p>A process could be a container, or just another bash shell:</p>
-<pre><code><code><div>$ bash -c 'echo $HELLO $WORLD'
-
-mondo
-</div></code></code></pre>
-<p>Only the exported one is available in the sub-process.</p>
-<p>We might use a variable for a directory path:</p>
-<pre><code><code><div>$ MYHOME=&quot;/home/ubuntu&quot;
-</div></code></code></pre>
-<p>Now we can use this variable with commands that operate on directories:</p>
-<pre><code><code><div>$ cd $MYHOME
+<p>Enter it, and check where you are:</p>
+<pre><code><code><div>$ cd training
 $ pwd
+/home/username/training
+</div></code></code></pre>
+<p>The current directory can be referred to using a single dot, <code>.</code>:</p>
+<pre><code><code><div>$ cd .
+$ pwd
+/home/username/training
+</div></code></code></pre>
+<p>The <strong>parent directory</strong> can be referred to using a double dot, <code>..</code>:</p>
+<pre><code><code><div>$ cd ..
+$ pwd
+/home/username
+$ cd training
+</div></code></code></pre>
+<p>Create two more directories inside <code>training</code>, create one more into the first one of these, and then access the first one:</p>
+<pre><code><code><div>$ mkdir dir1 dir2
+$ mkdir dir1/one-more-dir
+$ cd dir1
+</div></code></code></pre>
+<p>A <strong>full path</strong> does not depend on the current working directory, and starts with a slash, <code>/</code>, <em>e.g.</em>: <code>/home/username/training</code>.<br>
+A <strong>relative path</strong> depends on the current working directory, and starts with a directory name, a <code>.</code> or a <code>..</code>, <em>e.g.</em>: <code>one-more-dir</code>, <code>./one-more-dir</code>, <code>../dir2</code>.</p>
+<p>Go back to the <code>training</code> parent directory:</p>
+<pre><code><code><div>$ cd ..
+$ pwd
+/home/username/training
+</div></code></code></pre>
+<h2 id="handling-files">Handling files</h2>
+<p>Now let us play with files.  Make new empty files using <code>touch</code>:</p>
+<pre><code><code><div>$ touch file1
+$ touch file2 file3
+$ touch dir1/file4
+</div></code></code></pre>
+<p>The command is actually designed for altering timestamps of existing files; however it will create an empty file, if the provided filename does not match an existing one.</p>
+<p>Check the content of a directory with <code>ls</code>:</p>
+<pre><code><code><div>$ ls
+dir1  dir2  file1  file2  file3
+$ ls dir1
+file4  one-more-dir
+</div></code></code></pre>
+<p>Get more details about files and directories with <code>ls -l</code>:</p>
+<pre><code><code><div>$ ls -l
+total 8
+drwxr-x--- 3 username username 4096 Aug 26 14:10 dir1
+drwxr-x--- 2 username username 4096 Aug 26 14:10 dir2
+-rw-r----- 1 username username    0 Aug 26 14:10 file1
+-rw-r----- 1 username username    0 Aug 26 14:10 file2
+-rw-r----- 1 username username    0 Aug 26 14:10 file3
+</div></code></code></pre>
+<p>To make a copy of a file with another name use <code>cp</code>:</p>
+<pre><code><code><div>$ cp file1 copy1
+</div></code></code></pre>
+<p>To copy a directory use <code>cp -r</code>:</p>
+<pre><code><code><div>$ cp -r dir1 copydir1
+</div></code></code></pre>
+<p>To rename a file use <code>mv</code>:</p>
+<pre><code><code><div>$ mv copy1 another-file
+</div></code></code></pre>
+<p>To move a file to another directory use <code>mv</code> again, but now with the second argument as an existing directory:</p>
+<pre><code><code><div>$ mv another-file dir2/
+</div></code></code></pre>
+<p>Use <code>rm</code> to remove a file:</p>
+<pre><code><code><div>$ rm file3
+</div></code></code></pre>
+<p>Use <code>rm -r</code> to remove a directory:</p>
+<pre><code><code><div>$ rm -r copydir1
+</div></code></code></pre>
+<p>Multiple files and/or directories can be selected using the <strong>wildcard</strong> characters <code>?</code> and <code>*</code>.<br>
+The question mark, <code>?</code>, means any value of a single character:</p>
+<pre><code><code><div>$ ls file?
+file1  file2
+</div></code></code></pre>
+<p>The asterisk, <code>*</code>, means any value of any number of characters:</p>
+<pre><code><code><div>$ ls f*
+file1  file2
+</div></code></code></pre>
+<p>When the <code>*</code> also includes directories, <code>ls</code> will output their content, too:</p>
+<pre><code><code><div>$ ls *
+file1  file2
 
-/home/ubuntu
-</div></code></code></pre>
-<p>There's a way to store the output of a command inside the variable.  It uses the form <code>$( .. )</code>.  For instance, let's obtain the path of the current working directory from the command <code>cmd</code>, and store it in the variable <code>myplace</code>:</p>
-<pre><code><code><div>$ myplace=$(pwd)
-$ echo $myplace
+dir1:
+file4  one-more-dir
 
-/home/ubuntu
+dir2:
+another-file
 </div></code></code></pre>
-<p>Every shell session automatically defines a number of variables, some of which can be useful.<br>
-Among others, <code>$HOME</code> contains the path to your home directory, <code>$USER</code> contains your username, and <code>$PATH</code> has the list of paths where the shell looks for executable programs and scripts.</p>
-<h2 id="visualising-contents-of-text-files">Visualising contents of text files</h2>
-<p>Let's now create a text file with some words in it.  We'll use a popular, friendly text editor called <code>nano</code>:</p>
-<pre><code><code><div>$ nano words.txt
+<h2 id="using-environment-variables">Using environment variables</h2>
+<p>You can assign a <strong>value</strong>, <em>i.e.</em> a string of characters, to an environment <strong>variable</strong>.  We call <strong>shell environment</strong> the whole set of variables defined in the current shell session.<br>
+Assign a variable using the equal operator, <code>=</code>:</p>
+<pre><code><code><div>$ HELLO=&quot;world&quot;
 </div></code></code></pre>
-<p>In the editor screen, write something random.</p>
-<p>To save this text, press <code>Ctrl-O</code>, then <code>Enter</code>.<br>
-To exit, press <code>Ctrl-X</code>.</p>
-<p>Now we want to visualise the contents of this file on our terminal.</p>
-<p>We can use <code>cat</code> to display it all in one go:</p>
-<pre><code><code><div>$ cat words.txt
+<p>The value can be reused later in the same shell session by referring to the corresponding variable.  For instance, use <code>echo</code> to just display the variable value:</p>
+<pre><code><code><div>$ echo $HELLO
+world
+</div></code></code></pre>
+<p>To make the variable accessible inside sub-processes, you need to <code>export</code> it:</p>
+<pre><code><code><div>$ export BYE=&quot;moon&quot;
+</div></code></code></pre>
+<p>A process could be a program, a shell script, or just another Bash shell.  Let us verify the latter case.  Start a new Bash shell with <code>bash</code>, and then <code>exit</code> it when done:</p>
+<pre><code><code><div>$ bash
+$ echo $HELLO
 
-random words that we just saved in this file
+$ echo $BYE
+moon
+$ exit
+exit
 </div></code></code></pre>
-<p>For very long files, we might want to be able to navigate the content in chunks.  We can achieve this with <code>less</code>:</p>
-<pre><code><code><div>$ less words.txt
+<p>You can use a variable to store a directory path:</p>
+<pre><code><code><div>$ pwd
+/home/username/training
+$ MYDIR=&quot;/home/username/training&quot;
 </div></code></code></pre>
-<p>Go forward by pressing <code>Ctrl-F</code>, go backwards with <code>Ctrl-B</code>.<br>
-Quit the navigation by pressing <code>q</code>.</p>
+<p>And then use it:</p>
+<pre><code><code><div>$ echo $MYDIR
+/home/username/training
+$ ls $MYDIR
+dir1  dir2  file1  file2
+</div></code></code></pre>
+<p>There is a method to store the output of a command inside the variable: ncapsulating the command within the syntax <code>$( )</code>.  For instance, use such syntax to capture and store the output of <code>pwd</code>:</p>
+<pre><code><code><div>$ MYDIR_AGAIN=&quot;$(pwd)&quot;
+$ echo $MYDIR_AGAIN
+/home/username/training
+</div></code></code></pre>
+<p>Every shell session automatically defines a number of environment variables, some of which can be quiteuseful.<br>
+Among others, <code>$HOME</code> contains the path to your home directory, <code>$USER</code> contains your username, and <code>$PATH</code> has the list of paths where the shell looks for executable programs and scripts:</p>
+<pre><code><code><div>$ echo $HOME
+/home/username
+$ echo $USER
+username
+$ echo $PATH
+/usr/local/bin:/usr/bin:/bin
+</div></code></code></pre>
+<h2 id="editing-and-visualising-text-files">Editing and visualising text files</h2>
+<p>Let us now use the text editor <code>nano</code> to create, edit and save a text file.  First, start the editor with a new empty text filw called <code>text</code>:</p>
+<pre><code><code><div>$ nano text
+</div></code></code></pre>
+<p>Now, type the following in the editor:</p>
+<pre><code><code><div>Line 1
+Fancy line 2
+Super line 3
+Extra line 4
+Last line 5
+</div></code></code></pre>
+<p>To save this text, press <code>Ctrl-O</code> (<code>Control</code> + <code>O</code>), then <code>Enter</code>.<br>
+To exit the editor, press <code>Ctrl-X</code>.</p>
+<p>Visualise the full contents of the file from the shell using <code>cat</code>:</p>
+<pre><code><code><div>$ cat text
+Line 1
+Fancy line 2
+Super line 3
+Extra line 4
+Last line 5
+</div></code></code></pre>
+<p>For long files, the command <code>less</code> allows showing the contents one screen at a time.  The next screen can be accessed using <code>Space</code> or <code>Ctrl-F</code> (forward), the previous screen using <code>Ctrl-B</code> (backward).  Quit the <code>less</code> screen with <code>q</code>.  You can trial this with the file you just created, although the output will most likely fit in a single screen:</p>
+<pre><code><code><div>$ less text
+Line 1
+Fancy line 2
+Super line 3
+Extra line 4
+Last line 5
+text lines 1-5/5 (END)
+$ # quit by typing `q`
+</div></code></code></pre>
+<p>Use <code>head</code>/<code>tail</code> to visualise the first/last lines of a file.  By default 10 lines are displayed, but a custom number can be specified using a specific command option:</p>
+<pre><code><code><div>$ head -1 text 
+Line 1
+$ tail -1 text 
+Last line 5
+</div></code></code></pre>
+<h2 id="manipulating-outputs-and-text-files">Manipulating outputs and text files</h2>
+<p>Use <code>wc</code> to get the line, word and character count of a text:</p>
+<pre><code><code><div>$ wc text
+ 5 14 58 text
+</div></code></code></pre>
+<p>You can see that the <code>text</code> file has 5 lines, 14 words and 58 characters (including newlines).</p>
+<p>Use <code>grep</code> to filter text lines matching a specific string pattern.  Search for the string <code>Super</code> in the text file created above:</p>
+<pre><code><code><div>$ grep Super text
+Super line 3
+</div></code></code></pre>
+<p>Commands can be connected together to feed the output of a command as the input for the following command. To connect commands use the <strong>pipe operator</strong>, <code>|</code>:</p>
+<pre><code><code><div>$ echo &quot;Hello world from Pawsey.&quot; | wc
+      1       4      25
+</div></code></code></pre>
+<p><strong>Redirection operators</strong> can be used to connect a file with the output or input of a command.<br>
+Use <code>&gt;</code> to redirect a command output into a file (file will be overwritten):</p>
+<pre><code><code><div>$ echo &quot;Hello world from Pawsey.&quot; &gt;hello
+$ cat hello
+Hello world from Pawsey.
+$ echo &quot;Hello again.&quot; &gt;hello
+$ cat hello
+Hello again.
+</div></code></code></pre>
+<p>Use <code>&gt;&gt;</code> to append a command output into a file (file will not be overwritten):</p>
+<pre><code><code><div>$ echo &quot;Bye bye from Pawsey.&quot; &gt;&gt;bye
+$ echo &quot;Bye bye again.&quot; &gt;&gt;bye
+$ cat bye
+Bye bye from Pawsey.
+Bye bye again.
+</div></code></code></pre>
+<p>Use <code>&lt;</code> to feed the contents of a file as command input:</p>
+<pre><code><code><div>$ wc &lt; bye 
+ 2  7 36
+</div></code></code></pre>
+<p>Other useful commands for file and output manipulations include <code>cut</code>, <code>tr</code>, <code>sort</code>, <code>sed</code> and <code>awk</code>.</p>
+<h2 id="more-commands">More commands</h2>
+<p>Use <code>hostname</code> to output the name of the computer/server where the shell session is open:</p>
+<pre><code><code><div>$ hostname
+setonix-01
+</div></code></code></pre>
+<p>Use <code>which</code> to get the full path of a program:</p>
+<pre><code><code><div>$ which grep
+/usr/bin/grep
+</div></code></code></pre>
+<p>Some commands are not programs (see next command to know more):</p>
+<pre><code><code><div>$ which cd
+which: no cd in (/usr/local/bin:/usr/bin:/bin)
+</div></code></code></pre>
+<p>Use <code>type</code> to get information about the typology of command:</p>
+<pre><code><code><div>$ type grep
+grep is /usr/bin/grep
+$ type cd
+cd is a shell builtin
+</div></code></code></pre>
+<p>Sometimes it is useful to group together a set of files and/or directories within a single archive file, which is typically called tarball and assigned the extension <code>.tar</code>. The <code>tar</code> program is used to this end.<br>
+Create a tarball containing all files and/or directories (with their contents) whose name starts with <code>file</code> or <code>dir</code>:</p>
+<pre><code><code><div>$ tar cf archive1.tar file* dir*
+</div></code></code></pre>
+<p>Visualise its contents:</p>
+<pre><code><code><div>$ tar tf archive.tar
+file1
+file2
+dir1/
+dir1/one-more-dir/
+dir1/file4
+dir2/
+dir2/another-file
+</div></code></code></pre>
+<p>Now create a directory <code>expand</code>, enter it, unpack the tarball there, and check the directory contents:</p>
+<pre><code><code><div>$ mkdir expand
+$ cd expand
+$ tar xf ../archive1.tar
+$ ls
+dir1  dir2  file1  file2
+cd ..
+</div></code></code></pre>
+<p>If you also want to compress the tarball to reduce its size, add the option <code>z</code> to the commands above, and use the conventional extension <code>.tar.gz</code>:</p>
+<pre><code><code><div>$ tar czf archive2.tar.gz file* dir*
+$ ls -l archive*
+-rw-r----- 1 username username 20480 Aug 26 15:59 archive1.tar
+-rw-r----- 1 username username   581 Aug 26 16:03 archive2.tar.gz
+</div></code></code></pre>
+<p>The latter tarball takes 581 bytes instead of 20480.  Note that compression rates may vary significantly depending on the file contents.</p>
+<h2 id="keyboard-tricks">Keyboard tricks</h2>
+<p>Use <code>Up-arrow</code> and <code>Down-arrow</code> to browse the shell history of commands:</p>
+<pre><code><code><div>$ # hit Up-arrow once
+$ ls -l archive*
+$ # hit Up-arrow again
+$ tar czf archive2.tar.gz file* dir*
+$ # hit Down-arrow once
+$ ls -l archive*
+</div></code></code></pre>
+<p>Note you will need to hit <code>Enter</code> to actually execute the selected command, as usual.</p>
+<p><code>Tab</code> completion is a handy feature that can reduce typing and make shell usage more convenient.  Start typing a command, then hit <code>Tab</code> to see available commands whose name start with the typed characters:</p>
+<pre><code><code><div>$ # type without hitting Enter
+$ host
+$ # hit Tab twice
+host         hostid       hostname     hostnamectl
+$ hostn
+$ # hit Tab again
+$ hostname
+</div></code></code></pre>
+<p>Again, to execute the selected command hit <code>Enter</code>, after eventually having edited it or added more arguments.</p>
+<p>If you need to stop what you are typing, or a running program, and get back to an empty shell within the same session, use <code>Ctrl-C</code>:</p>
+<pre><code><code><div>$ # type without hitting Enter
+$ hostname
+$ # hit Ctrl-C
+$ hostname^C
+$ 
+</div></code></code></pre>
+<p>This is all for this Bash shell refresher.  You can close the shell session with <code>exit</code>!</p>
 
         <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         

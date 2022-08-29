@@ -87,7 +87,7 @@ You can access this reference document both as a <a href="https://github.com/Paw
 For a more detailed tutorial on the Bash shell, see <a href="https://swcarpentry.github.io/shell-novice">The Unix Shell</a> by the <a href="https://software-carpentry.org">Software Carpentries</a>.</p>
 <h2 id="outline">Outline</h2>
 <ol>
-<li><a href="#definitions">Definitions</a></li>
+<li><a href="#concepts">Concepts</a></li>
 <li><a href="#hands-on">Hands-on</a><br>
 2.1. <a href="#handling-directories">Handling directories</a><br>
 2.2. <a href="#handling-files">Handling files</a><br>
@@ -96,9 +96,10 @@ For a more detailed tutorial on the Bash shell, see <a href="https://swcarpentry
 2.5. <a href="#manipulating-outputs-and-text-files">Manipulating outputs and text files</a><br>
 2.6. <a href="#more-commands">More commands</a><br>
 2.7. <a href="#keyboard-tricks">Keyboard tricks</a></li>
+<li><a href="#glossary">Glossary</a></li>
 </ol>
 <hr>
-<h2 id="definitions">Definitions</h2>
+<h2 id="concepts">Concepts</h2>
 <ul>
 <li>
 <p><strong>Command Line Interface</strong> (CLI): a type of interface to use a computer, that requires the user to type textual <strong>commands</strong> and read their textual outputs by means of a prompt. Some commands may require optional or mandatory <strong>arguments</strong>.</p>
@@ -124,7 +125,7 @@ For a more detailed tutorial on the Bash shell, see <a href="https://swcarpentry
 <p><strong>Text editor</strong>: a program used to open and edit textual files; some of them are designed for use within a command line interface, such as <strong>nano</strong>, <strong>vi</strong> and <strong>emacs</strong>.</p>
 </li>
 </ul>
-<p>NOTE: in all the examples below, by convention commands are identified by lines starting with <code>$</code>, which represents the prompt (not to be typed).  Other lines represent command outputs.  Also note how <code>#</code> denotes a comment line in Bash.</p>
+<p>NOTE: in all the examples below, commands are identified by lines starting with <code>$</code>, which represents the prompt (not to be typed).  Other lines represent command outputs.  Also note how <code>#</code> denotes a comment line in Bash.</p>
 <hr>
 <h2 id="hands-on">Hands-on</h2>
 <h3 id="handling-directories">Handling directories</h3>
@@ -231,7 +232,7 @@ another-file
 <hr>
 <h3 id="using-environment-variables">Using environment variables</h3>
 <p>You can assign a <strong>value</strong>, <em>i.e.</em> a string of characters, to a named environment <strong>variable</strong>.  We call <strong>shell environment</strong> the whole set of variables defined in the current shell session.  Variables are typically lost when the current shell session is closed.<br>
-Assign a variable using the equal operator, <code>=</code>:</p>
+Assign a variable using the assignment operator, <code>=</code>:</p>
 <pre><code><code><div>$ HELLO=&quot;world&quot;
 </div></code></code></pre>
 <p>The value can be reused later in the same shell session by referring to the corresponding variable name, prefixed by a dollar, <code>$</code>.  For instance, use <code>echo</code> to display the variable value:</p>
@@ -241,7 +242,7 @@ world
 <p>To make the variable accessible inside sub-processes, you need to <code>export</code> it:</p>
 <pre><code><code><div>$ export BYE=&quot;moon&quot;
 </div></code></code></pre>
-<p>A process could be a program, a shell script, or just another Bash shell.  Let us verify the latter case.  Start a new Bash shell with <code>bash</code>, and then <code>exit</code> it when done:</p>
+<p>A sub-process could be a program, a shell script, or just another Bash shell.  Let us verify the latter case.  Start a new Bash shell with <code>bash</code>, and then <code>exit</code> it when done:</p>
 <pre><code><code><div>$ bash
 $ echo $HELLO
 
@@ -261,7 +262,7 @@ $ MYDIR=&quot;/home/username/training&quot;
 $ ls $MYDIR
 dir1  dir2  file1  file2
 </div></code></code></pre>
-<p>There is a method to store the output of a command inside the variable: ncapsulating the command within the syntax <code>$( )</code>.  For instance, use such syntax to capture and store the output of <code>pwd</code>:</p>
+<p>There is a method to store the output of a command inside the variable: encapsulating the command within the syntax <code>$( )</code>.  For instance, use such syntax to capture and store the output of <code>pwd</code>:</p>
 <pre><code><code><div>$ MYDIR_AGAIN=&quot;$(pwd)&quot;
 $ echo $MYDIR_AGAIN
 /home/username/training
@@ -296,7 +297,7 @@ Super line 3
 Extra line 4
 Last line 5
 </div></code></code></pre>
-<p>For long files, the command <code>less</code> allows showing the contents one screen at a time.  The next screen can be accessed using <code>Space</code> or <code>Ctrl-F</code> (forward), the previous screen using <code>Ctrl-B</code> (backward).  Quit the <code>less</code> screen with <code>q</code>.  You can trial this with the file you just created, although the output will most likely fit in a single screen:</p>
+<p>For long files, the command <code>less</code> allows showing the contents one screen at a time.  The next screen can be accessed using <code>Space</code> or <code>Ctrl-F</code> (forward), the previous screen using <code>Ctrl-B</code> (backwards).  Quit the <code>less</code> screen with <code>q</code>.  You can trial this with the file you just created, although the output will most likely fit in a single screen:</p>
 <pre><code><code><div>$ less text
 Line 1
 Fancy line 2
@@ -390,7 +391,7 @@ $ ls
 dir1  dir2  file1  file2
 cd ..
 </div></code></code></pre>
-<p>If you also want to compress the tarball to reduce its size, add the option <code>z</code> to the commands above, and use the conventional extension <code>.tar.gz</code>:</p>
+<p>If you also want to compress the tarball to reduce its size, add the option <code>z</code> to the commands above, and use the conventional extension <code>.tar.gz</code> (or <code>.tgz</code>):</p>
 <pre><code><code><div>$ tar czf archive2.tar.gz file* dir*
 $ ls -l archive*
 -rw-r----- 1 username username 20480 Aug 26 15:59 archive1.tar
@@ -442,6 +443,166 @@ $ hostname^C
 $ 
 </div></code></code></pre>
 <p>This is all for this Bash shell refresher.  You can close the shell session with <code>exit</code>!</p>
+<hr>
+<h2 id="glossary">Glossary</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>~</code></td>
+<td>alias for <em>home</em> directory</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td><strong>c</strong>hange <strong>d</strong>irectory</td>
+</tr>
+<tr>
+<td><code>pwd</code></td>
+<td><strong>p</strong>rint <strong>w</strong>orking (current) <strong>d</strong>irectory</td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td><strong>m</strong>a<strong>k</strong>e (create) <strong>dir</strong>ectory</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>alias for current directory</td>
+</tr>
+<tr>
+<td><code>..</code></td>
+<td>alias for <em>parent</em> directory</td>
+</tr>
+<tr>
+<td><code>touch</code></td>
+<td>create empty file (or update file timestamp)</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td><strong>l</strong>i<strong>s</strong>t contents</td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td><strong>c</strong>o<strong>p</strong>y file</td>
+</tr>
+<tr>
+<td><code>cp -r</code></td>
+<td><strong>c</strong>o<strong>p</strong>y <strong>r</strong>ecursively (directory)</td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td><strong>m</strong>o<strong>v</strong>e / rename file or directory</td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td><strong>r</strong>e<strong>m</strong>ove (delete) file</td>
+</tr>
+<tr>
+<td><code>rm -r</code></td>
+<td><strong>r</strong>e<strong>m</strong>ove <strong>r</strong>ecursively (directory)</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>wildcard for any value of a single character</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>wildcard for any value of any number of characters</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>assignment operator for variables</td>
+</tr>
+<tr>
+<td><code>echo</code></td>
+<td>output text string (including variables)</td>
+</tr>
+<tr>
+<td><code>export</code></td>
+<td><strong>export</strong> variable to sub- (child) processes</td>
+</tr>
+<tr>
+<td><code>$( )</code></td>
+<td>syntax to capture output of a command</td>
+</tr>
+<tr>
+<td><code>cat</code></td>
+<td>visualise whole contents of a file</td>
+</tr>
+<tr>
+<td><code>less</code></td>
+<td>visualise contents of a file, one screent at a time</td>
+</tr>
+<tr>
+<td><code>head</code></td>
+<td>visualise first lines of a file</td>
+</tr>
+<tr>
+<td><code>tail</code></td>
+<td>visualise last lines of a file</td>
+</tr>
+<tr>
+<td><code>wc</code></td>
+<td><strong>w</strong>ord <strong>c</strong>ount (files or strings)</td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td><strong>G</strong>nu <strong>rep</strong>ort: filter text lines matching a string pattern</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>pipe operator: connect command output to input of next command</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>redirect operator, overwrite: send command output to file</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>redirect operator, append: send command output to file</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>redirector operator, input: get command input from file</td>
+</tr>
+<tr>
+<td><code>hostname</code></td>
+<td>display <strong>name</strong> of <strong>host</strong> computer</td>
+</tr>
+<tr>
+<td><code>which</code></td>
+<td>display full path of program</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>display infor on typology of command</td>
+</tr>
+<tr>
+<td><code>tar</code></td>
+<td>manage <strong>t</strong>ape <strong>ar</strong>chives (file archives)</td>
+</tr>
+<tr>
+<td><code>Up-arrow</code></td>
+<td>navigate shell history backwards</td>
+</tr>
+<tr>
+<td><code>Down-arrow</code></td>
+<td>navigate shell history forward</td>
+</tr>
+<tr>
+<td><code>Tab</code>-completion</td>
+<td>get shell to auto-complete commands and file names</td>
+</tr>
+<tr>
+<td><code>Ctrl-C</code></td>
+<td>abort typing or stop program</td>
+</tr>
+</tbody>
+</table>
 <hr>
 
         <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>

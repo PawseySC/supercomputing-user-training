@@ -8,7 +8,7 @@ For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swc
 
 ## Outline
 
-1. [Concepts](#concepts)
+1. [Concepts](#concepts)  
 2. [Hands-on](#hands-on)  
   2.1. [Handling directories](#handling-directories)  
   2.2. [Handling files](#handling-files)  
@@ -17,6 +17,7 @@ For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swc
   2.5. [Manipulating outputs and text files](#manipulating-outputs-and-text-files)  
   2.6. [More commands](#more-commands)  
   2.7. [Keyboard tricks](#keyboard-tricks)  
+3. [Glossary](#glossary)  
 
 ***
 
@@ -197,7 +198,7 @@ another-file
 ### Using environment variables
 
 You can assign a **value**, *i.e.* a string of characters, to a named environment **variable**.  We call **shell environment** the whole set of variables defined in the current shell session.  Variables are typically lost when the current shell session is closed.  
-Assign a variable using the equal operator, `=`:
+Assign a variable using the assignment operator, `=`:
 ```
 $ HELLO="world"
 ```
@@ -213,7 +214,7 @@ To make the variable accessible inside sub-processes, you need to `export` it:
 $ export BYE="moon"
 ```
 
-A process could be a program, a shell script, or just another Bash shell.  Let us verify the latter case.  Start a new Bash shell with `bash`, and then `exit` it when done:
+A sub-process could be a program, a shell script, or just another Bash shell.  Let us verify the latter case.  Start a new Bash shell with `bash`, and then `exit` it when done:
 ```
 $ bash
 $ echo $HELLO
@@ -239,7 +240,7 @@ $ ls $MYDIR
 dir1  dir2  file1  file2
 ```
 
-There is a method to store the output of a command inside the variable: ncapsulating the command within the syntax `$( )`.  For instance, use such syntax to capture and store the output of `pwd`:
+There is a method to store the output of a command inside the variable: encapsulating the command within the syntax `$( )`.  For instance, use such syntax to capture and store the output of `pwd`:
 ```
 $ MYDIR_AGAIN="$(pwd)"
 $ echo $MYDIR_AGAIN
@@ -288,7 +289,7 @@ Extra line 4
 Last line 5
 ```
 
-For long files, the command `less` allows showing the contents one screen at a time.  The next screen can be accessed using `Space` or `Ctrl-F` (forward), the previous screen using `Ctrl-B` (backward).  Quit the `less` screen with `q`.  You can trial this with the file you just created, although the output will most likely fit in a single screen:
+For long files, the command `less` allows showing the contents one screen at a time.  The next screen can be accessed using `Space` or `Ctrl-F` (forward), the previous screen using `Ctrl-B` (backwards).  Quit the `less` screen with `q`.  You can trial this with the file you just created, although the output will most likely fit in a single screen:
 ```
 $ less text
 Line 1
@@ -419,7 +420,7 @@ dir1  dir2  file1  file2
 cd ..
 ```
 
-If you also want to compress the tarball to reduce its size, add the option `z` to the commands above, and use the conventional extension `.tar.gz`:
+If you also want to compress the tarball to reduce its size, add the option `z` to the commands above, and use the conventional extension `.tar.gz` (or `.tgz`):
 
 ```
 $ tar czf archive2.tar.gz file* dir*
@@ -488,4 +489,50 @@ $
 This is all for this Bash shell refresher.  You can close the shell session with `exit`!
 
 ***
+
+
+## Glossary
+
+| Command | Functionality |
+|---|---|
+| `~` | alias for *home* directory |
+| `cd` | **c**hange **d**irectory |
+| `pwd` | **p**rint **w**orking (current) **d**irectory |
+| `mkdir` | **m**a**k**e (create) **dir**ectory |
+| `.` | alias for current directory |
+| `..` | alias for *parent* directory |
+| `touch` | create empty file (or update file timestamp) |
+| `ls` | **l**i**s**t contents |
+| `cp` | **c**o**p**y file |
+| `cp -r` | **c**o**p**y **r**ecursively (directory) |
+| `mv` | **m**o**v**e / rename file or directory |
+| `rm` |  **r**e**m**ove (delete) file |
+| `rm -r` |  **r**e**m**ove **r**ecursively (directory) |
+| `?` | wildcard for any value of a single character |
+| `*` | wildcard for any value of any number of characters |
+| `=` | assignment operator for variables |
+| `echo` | output text string (including variables) |
+| `export` | **export** variable to sub- (child) processes |
+| `$( )` | syntax to capture output of a command |
+| `cat` | visualise whole contents of a file |
+| `less` | visualise contents of a file, one screent at a time |
+| `head` | visualise first lines of a file |
+| `tail` | visualise last lines of a file |
+| `wc` | **w**ord **c**ount (files or strings) |
+| `grep` | **G**nu **rep**ort: filter text lines matching a string pattern |
+| `\|` | pipe operator: connect command output to input of next command |
+| `>` | redirect operator, overwrite: send command output to file |
+| `>>` | redirect operator, append: send command output to file |
+| `<` | redirector operator, input: get command input from file |
+| `hostname` | display **name** of **host** computer |
+| `which` | display full path of program |
+| `type` | display infor on typology of command |
+| `tar` | manage **t**ape **ar**chives (file archives) |
+| `Up-arrow` | navigate shell history backwards |
+| `Down-arrow` | navigate shell history forward |
+| `Tab`-completion | get shell to auto-complete commands and file names |
+| `Ctrl-C` | abort typing or stop program |
+
+***
+
 

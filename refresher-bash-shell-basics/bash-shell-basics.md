@@ -8,7 +8,7 @@ For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swc
 
 ## Outline
 
-1. [Definitions](#definitions)
+1. [Concepts](#concepts)
 2. [Hands-on](#hands-on)  
   2.1. [Handling directories](#handling-directories)  
   2.2. [Handling files](#handling-files)  
@@ -21,7 +21,7 @@ For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swc
 ***
 
 
-## Definitions
+## Concepts
 
 * **Command Line Interface** (CLI): a type of interface to use a computer, that requires the user to type textual **commands** and read their textual outputs by means of a prompt. Some commands may require optional or mandatory **arguments**.
 
@@ -38,7 +38,7 @@ For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swc
 
 * **Text editor**: a program used to open and edit textual files; some of them are designed for use within a command line interface, such as **nano**, **vi** and **emacs**.
 
-NOTE: in all the examples below, by convention commands are identified by lines starting with `$`, which represents the prompt (not to be typed).  Other lines represent command outputs.  Also note how `#` denotes a comment line in Bash.
+NOTE: in all the examples below, commands are identified by lines starting with `$`, which represents the prompt (not to be typed).  Other lines represent command outputs.  Also note how `#` denotes a comment line in Bash.
 
 ***
 

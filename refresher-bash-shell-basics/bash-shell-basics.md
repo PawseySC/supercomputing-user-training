@@ -2,7 +2,8 @@
 
 This is a concise refresher on the basic commands available with the Bash shell.
 It is designed as a prerequisite module to the Supercomputing User Training offered by [**Pawsey Supercomputing Research Centre**](https://www.pawsey.org.au), Perth (Australia).  
-For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swcarpentry.github.io/shell-novice), by the [Software Carpentries](https://software-carpentry.org).  
+You can access this reference document both as a [web page](https://github.com/PawseySC/supercomputing-user-training/blob/main/refresher-bash-shell-basics/bash-shell-basics.md) and as a [PDF document](https://github.com/PawseySC/supercomputing-user-training/raw/main/refresher-bash-shell-basics/Refresher-Bash-Shell-Basics.pdf).  
+For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swcarpentry.github.io/shell-novice) by the [Software Carpentries](https://software-carpentry.org).  
 
 
 ## Outline
@@ -26,7 +27,7 @@ For a more detailed tutorial on the Bash shell, see [The Unix Shell](https://swc
 
 * **Shell**: a program with a prompt providing a command line interface, and an interpreter to execute commands.  There are different implementations of a shell, using different **shell languages** for the commands.
 
-* **Bash**: one of the most popular shells in the Linux world.
+* **Bash**: one of the most popular shell languages in the Linux world.
 
 * **Shell script**: a text file containing a sequence of shell commands.  It can be executed via the shell, and is useful to increase reproducibility of a workflow.
 
@@ -195,7 +196,7 @@ another-file
 
 ### Using environment variables
 
-You can assign a **value**, *i.e.* a string of characters, to an environment **variable**.  We call **shell environment** the whole set of variables defined in the current shell session.  
+You can assign a **value**, *i.e.* a string of characters, to a named environment **variable**.  We call **shell environment** the whole set of variables defined in the current shell session.  Variables are typically lost when the current shell session is closed.  
 Assign a variable using the equal operator, `=`:
 ```
 $ HELLO="world"

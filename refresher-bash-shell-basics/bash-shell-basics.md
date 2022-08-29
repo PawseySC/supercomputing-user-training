@@ -202,7 +202,7 @@ Assign a variable using the equal operator, `=`:
 $ HELLO="world"
 ```
 
-The value can be reused later in the same shell session by referring to the corresponding variable.  For instance, use `echo` to just display the variable value:
+The value can be reused later in the same shell session by referring to the corresponding variable name, prefixed by a dollar, `$`.  For instance, use `echo` to display the variable value:
 ```
 $ echo $HELLO
 world
@@ -447,17 +447,34 @@ $ ls -l archive*
 ```
 Note you will need to hit `Enter` to actually execute the selected command, as usual.
 
-`Tab` completion is a handy feature that can reduce typing and make shell usage more convenient.  Start typing a command, then hit `Tab` to see available commands whose name start with the typed characters:
+`Tab`-completion is a handy feature that can reduce typing and make shell usage more convenient.  Start typing a command, then hit `Tab` to see available commands whose name start with the typed characters:
 ```
 $ # type without hitting Enter
+$ ho
+$ # hit Tab
 $ host
 $ # hit Tab twice
 host         hostid       hostname     hostnamectl
+$ # type "n"
 $ hostn
 $ # hit Tab again
 $ hostname
 ```
 Again, to execute the selected command hit `Enter`, after eventually having edited it or added more arguments.
+
+You can also use `Tab`-completion with file names:
+```
+$ # type without hitting Enter
+$ ls ar
+$ # hit Tab
+$ ls archive
+$ # hit Tab twice
+archive1.tar     archive2.tar.gz 
+$ # type "1"
+$ ls archive1
+$ # hit Tab again
+$ ls archive1.tar
+```
 
 If you need to stop what you are typing, or a running program, and get back to an empty shell within the same session, use `Ctrl-C`:
 ```

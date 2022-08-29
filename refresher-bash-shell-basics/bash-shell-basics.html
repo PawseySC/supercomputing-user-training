@@ -234,7 +234,7 @@ another-file
 Assign a variable using the equal operator, <code>=</code>:</p>
 <pre><code><code><div>$ HELLO=&quot;world&quot;
 </div></code></code></pre>
-<p>The value can be reused later in the same shell session by referring to the corresponding variable.  For instance, use <code>echo</code> to just display the variable value:</p>
+<p>The value can be reused later in the same shell session by referring to the corresponding variable name, prefixed by a dollar, <code>$</code>.  For instance, use <code>echo</code> to display the variable value:</p>
 <pre><code><code><div>$ echo $HELLO
 world
 </div></code></code></pre>
@@ -409,16 +409,31 @@ $ # hit Down-arrow once
 $ ls -l archive*
 </div></code></code></pre>
 <p>Note you will need to hit <code>Enter</code> to actually execute the selected command, as usual.</p>
-<p><code>Tab</code> completion is a handy feature that can reduce typing and make shell usage more convenient.  Start typing a command, then hit <code>Tab</code> to see available commands whose name start with the typed characters:</p>
+<p><code>Tab</code>-completion is a handy feature that can reduce typing and make shell usage more convenient.  Start typing a command, then hit <code>Tab</code> to see available commands whose name start with the typed characters:</p>
 <pre><code><code><div>$ # type without hitting Enter
+$ ho
+$ # hit Tab
 $ host
 $ # hit Tab twice
 host         hostid       hostname     hostnamectl
+$ # type &quot;n&quot;
 $ hostn
 $ # hit Tab again
 $ hostname
 </div></code></code></pre>
 <p>Again, to execute the selected command hit <code>Enter</code>, after eventually having edited it or added more arguments.</p>
+<p>You can also use <code>Tab</code>-completion with file names:</p>
+<pre><code><code><div>$ # type without hitting Enter
+$ ls ar
+$ # hit Tab
+$ ls archive
+$ # hit Tab twice
+archive1.tar     archive2.tar.gz 
+$ # type &quot;1&quot;
+$ ls archive1
+$ # hit Tab again
+$ ls archive1.tar
+</div></code></code></pre>
 <p>If you need to stop what you are typing, or a running program, and get back to an empty shell within the same session, use <code>Ctrl-C</code>:</p>
 <pre><code><code><div>$ # type without hitting Enter
 $ hostname

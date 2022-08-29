@@ -83,7 +83,8 @@
         <h1 id="bash-shell-basics">Bash Shell Basics</h1>
 <p>This is a concise refresher on the basic commands available with the Bash shell.
 It is designed as a prerequisite module to the Supercomputing User Training offered by <a href="https://www.pawsey.org.au"><strong>Pawsey Supercomputing Research Centre</strong></a>, Perth (Australia).<br>
-For a more detailed tutorial on the Bash shell, see <a href="https://swcarpentry.github.io/shell-novice">The Unix Shell</a>, by the <a href="https://software-carpentry.org">Software Carpentries</a>.</p>
+You can access this reference document both as a <a href="https://github.com/PawseySC/supercomputing-user-training/blob/main/refresher-bash-shell-basics/bash-shell-basics.md">web page</a> and as a <a href="https://github.com/PawseySC/supercomputing-user-training/raw/main/refresher-bash-shell-basics/Refresher-Bash-Shell-Basics.pdf">PDF document</a>.<br>
+For a more detailed tutorial on the Bash shell, see <a href="https://swcarpentry.github.io/shell-novice">The Unix Shell</a> by the <a href="https://software-carpentry.org">Software Carpentries</a>.</p>
 <h2 id="outline">Outline</h2>
 <ol>
 <li><a href="#definitions">Definitions</a></li>
@@ -106,7 +107,7 @@ For a more detailed tutorial on the Bash shell, see <a href="https://swcarpentry
 <p><strong>Shell</strong>: a program with a prompt providing a command line interface, and an interpreter to execute commands.  There are different implementations of a shell, using different <strong>shell languages</strong> for the commands.</p>
 </li>
 <li>
-<p><strong>Bash</strong>: one of the most popular shells in the Linux world.</p>
+<p><strong>Bash</strong>: one of the most popular shell languages in the Linux world.</p>
 </li>
 <li>
 <p><strong>Shell script</strong>: a text file containing a sequence of shell commands.  It can be executed via the shell, and is useful to increase reproducibility of a workflow.</p>
@@ -229,7 +230,7 @@ another-file
 </div></code></code></pre>
 <hr>
 <h3 id="using-environment-variables">Using environment variables</h3>
-<p>You can assign a <strong>value</strong>, <em>i.e.</em> a string of characters, to an environment <strong>variable</strong>.  We call <strong>shell environment</strong> the whole set of variables defined in the current shell session.<br>
+<p>You can assign a <strong>value</strong>, <em>i.e.</em> a string of characters, to a named environment <strong>variable</strong>.  We call <strong>shell environment</strong> the whole set of variables defined in the current shell session.  Variables are typically lost when the current shell session is closed.<br>
 Assign a variable using the equal operator, <code>=</code>:</p>
 <pre><code><code><div>$ HELLO=&quot;world&quot;
 </div></code></code></pre>

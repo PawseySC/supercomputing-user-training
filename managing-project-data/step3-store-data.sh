@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --time=00:01:00
 
-module load miniocli/2022-02-02T02-03-24Z
+module load rclone/1.62.2
 MY_BUCKET=
 
 if [ -z ${MY_BUCKET} ] ; then
@@ -14,4 +14,4 @@ if [ -z ${MY_BUCKET} ] ; then
  exit 1
 fi
 
-mc cp output-file ${MY_BUCKET}/
+rclone copy ./output-file ${MY_BUCKET}/

@@ -12,4 +12,4 @@ export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 export OMP_PLACES=cores
 export OMP_PROC_BIND=close
 
-srun ./hello.x
+srun -c 64 ./hello.x
